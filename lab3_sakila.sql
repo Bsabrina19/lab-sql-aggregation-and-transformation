@@ -49,6 +49,38 @@ ORDER BY last_name ASC;
 
 
 # Challenge 2
+## The total number of films that have been released
+SELECT COUNT(film_id) AS total_films
+FROM film;
 
+## The number of films for each rating.
+SELECT rating, COUNT(film_id) AS film_count
+FROM film
+GROUP BY rating
+ORDER BY film_count DESC;
+
+SELECT rating, COUNT(film_id) AS film_count
+FROM film
+GROUP BY rating
+ORDER BY film_count DESC;
+
+## The mean film duration for each rating
+SELECT rating, ROUND(AVG(length), 2) AS avg_duration
+FROM film
+GROUP BY rating
+ORDER BY avg_duration DESC;
+
+## ratings having a mean duration of over two hours
+SELECT rating, ROUND(AVG(length), 2) AS avg_duration
+FROM film
+GROUP BY rating
+HAVING AVG(length) > 120
+ORDER BY avg_duration DESC;
+
+## the last names which are not repeated
+SELECT last_name
+FROM actor
+GROUP BY last_name
+HAVING COUNT(*) = 1;
 
 
